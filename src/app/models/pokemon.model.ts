@@ -1,7 +1,3 @@
-export interface Pokemon {
-    id: number;
-    name: string;
-    imageUrl: string;
-
+export interface Pokemon{
+    results: [{name: string, url: string}]
 }
-

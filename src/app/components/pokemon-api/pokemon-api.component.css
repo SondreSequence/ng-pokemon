@@ -1,0 +1,11 @@
+*{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+}

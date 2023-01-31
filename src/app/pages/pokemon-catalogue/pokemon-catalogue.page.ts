@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./pokemon-catalogue.page.css']
 })
 export class PokemonCataloguePage {
-
+  
 }
