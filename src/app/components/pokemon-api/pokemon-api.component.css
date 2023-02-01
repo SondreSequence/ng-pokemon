@@ -35,7 +35,7 @@ body{
 
 /* Animation */
 .anim-typewriter {
-  animation: typewriter 2s steps(44) 1s 1 normal both;
+  animation: typewriter 2s steps(44) 0.5s 1 normal both;
 }
 @keyframes typewriter {
   from {
@@ -66,18 +66,34 @@ body{
   text-align: center;
   color: white;
   background-image: linear-gradient(to top, white 50%, rgb(250,7,0) 50%), radial-gradient(circle at 50% 50%, rgb(250,7,0), white);
-  border: 0.1vw solid black;
+  border: 1.9px solid black;
   border-radius: theme('borderRadius.lg');
   padding: theme('spacing.6');
   box-shadow: theme('boxShadow.lg');
   margin: 15px;
   position: relative;
+  z-index: 1;
 }
 
+.caught::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2.9px;
+  width: 101.1%;
+  margin-left: -0.1vw;
+  background-color: black;
+  z-index: -1;
+}
+
+  
+  
 
 .pokeball{
   width: 20px;
-  height: 19px;
+  height: 20px;
 }
 
 .minimize.shrink {
@@ -120,15 +136,15 @@ button {
 
 .box {
   display: block;
-  font-size: 13px;
+  font-size: 16px;
   font-family: "Pokemon GB", Arial, sans-serif;
   border-radius: 2px;
   padding: 8px;
-  width: 20em;
+  width: 21em;
   height: 3em;
   line-height: 16px;
   margin: auto;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-top: 1px;
   background: white;
   border: 1px solid white;
@@ -151,3 +167,11 @@ button {
   from { margin-top: 20px; }
   to { margin-top: 23px; }
 }
+
+.pokeballs {
+  width: 200px;
+  height: 300px;
+  position: relative;
+
+}
+
