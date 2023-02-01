@@ -12,6 +12,7 @@ const routes: Routes = [
     component: PokemonCataloguePage,
     canActivate: [AuthGuard],
   },
+  {path: 'profile', component: page}
 ];
 
 @NgModule({

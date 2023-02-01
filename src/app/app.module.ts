@@ -10,6 +10,7 @@ import { PokemonApiComponent } from './components/pokemon-api/pokemon-api.compon
 import { from } from 'rxjs';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     LoginPage,
     PokemonCataloguePage,
     PokemonApiComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
