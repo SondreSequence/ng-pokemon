@@ -1,0 +1,23 @@
+<ul>
+    <li *ngFor="let pokemon of pokemonArray">
+      {{ pokemon.name }}
+      <img [src]="pokemon.image">
+    </li>
+  </ul>
+
+<script>
+const images = document.querySelectorAll("img");
+
+images.forEach(img => {
+  img.addEventListener("mouseenter", function() {
+    this.classList.add("animate__animated animate__bounce");
+    this.style.opacity = 0.5;
+    
+  });
+  img.addEventListener("mouseleave", function() {
+    this.classList.remove("animate__animated animate__bounce");
+  });
+});
+
+
+</script>

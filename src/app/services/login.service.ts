@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Trainer } from '../models/trainer.model';
-import { Observable, map } from 'rxjs';
+import { Observable, map, pipe, switchMap, of, tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/enviroments/enviroment';
+import { storageUtil } from '../utils/storage.util';
+import { StorageKeys } from '../enums/storage-keys.enum';
 
-const { apiTrainers } = environment;
+const { apiTrainers, API_KEY } = environment;
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +16,18 @@ export class LoginService {
   constructor(private readonly http: HttpClient) {}
 
   public login(username: string): Observable<Trainer> {
-    return this.checkUsername(username);
+    return this.checkUsername(username).pipe(
+      switchMap((user: Trainer | undefined) => {
+        // user does not exist
+        if (user === undefined) {
+          return this.createUser(username);
+        }
+        return of(user);
+      }),
+      tap((user: Trainer) => {
+        storageUtil.storageSave<Trainer>(StorageKeys.Trainer, user);
+      })
+    );
   }
 
   // Check if user exists
@@ -24,7 +37,7 @@ export class LoginService {
       .pipe(map((response: Trainer[]) => response.pop()));
   }
 
-  //If NOT user, create a user
+  //Create a user
   private createUser(username: string): Observable<Trainer> {
     const user = {
       username,
@@ -32,6 +45,7 @@ export class LoginService {
     };
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
+      'x-api-key': API_KEY,
     });
 
     return this.http.post<Trainer>(apiTrainers, user, { headers });

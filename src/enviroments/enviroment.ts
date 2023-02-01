@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
   apiTrainers: 'https://magical-olivine-windflower.glitch.me/trainers',
-  apiPokemons: 'https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20',
+  apiPokemon: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151',
   API_KEY: 'pullapydde',
 };
