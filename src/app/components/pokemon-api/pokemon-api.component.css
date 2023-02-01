@@ -4,8 +4,50 @@
     justify-content: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
-    font-size: 15px;
+    font-size: 1.8vh;
 }
+
+html{
+  min-height: 100%;
+  overflow: hidden;
+}
+body{
+  height: calc(100vh - 8em);
+  padding: 4em;
+  color: rgba(255,255,255,.75);
+  font-family: 'Anonymous Pro', monospace;  
+  background-color: rgb(25,25,25);  
+}
+
+
+.form-text {
+  display: block;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  font-size: 20vh;
+  margin: 0 auto;
+  font-size: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+
+/* Animation */
+.anim-typewriter {
+  animation: typewriter 2s steps(44) 1s 1 normal both;
+}
+@keyframes typewriter {
+  from {
+    width: 0em;
+  }
+  to {
+    width: 24em;
+  }
+}
+
+
+
 
 .card {
     display: flex;
@@ -18,8 +60,28 @@
     margin: 15px;
 }
 
+.caught {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  background-image: linear-gradient(to top, white 50%, rgb(250,7,0) 50%), radial-gradient(circle at 50% 50%, rgb(250,7,0), white);
+  border: 0.1vw solid black;
+  border-radius: theme('borderRadius.lg');
+  padding: theme('spacing.6');
+  box-shadow: theme('boxShadow.lg');
+  margin: 15px;
+  position: relative;
+}
+
+
+.pokeball{
+  width: 20px;
+  height: 19px;
+}
+
 .minimize.shrink {
-  animation: move 5s;
+  animation: move 1s;
 }
 
 @keyframes move {
@@ -33,6 +95,7 @@
   .card-container {
     display: flex;
     flex-wrap: wrap;
+    font-family: "Pokemon GB", Arial, sans-serif;
   }
 
 button {

@@ -16,9 +16,17 @@ export class PokemonApiComponent implements OnInit {
 
   public pokemonArray: { name: string, image: string }[] = [];
 
-  public onButtonClick(pokemon: { name: string, image: string }, pokemonImg: HTMLElement ) {
-    pokemonImg.className = 'minimize shrink';
+  public onButtonClick(pokemon: { name: string, image: string }, cardElement: HTMLElement, pokeball: HTMLElement ) {
+    cardElement.className = 'card animate__animated animate__flip';
+    setInterval(() => {
+      cardElement.className = 'caught';
+      pokeball.style.display = 'block';
+    }, 800);
   }
+
+ /*  public inputChange(pokemon: { name: string, image: string }, input: HTMLElement ) {
+    pokemonImg.className = 'card animate__animated animate__flip';
+  } */
 
   public handleMouseEnter(pokemonImg: HTMLElement){
     pokemonImg.className = 'animate__animated animate__bounce';

@@ -10,6 +10,11 @@
   transform: translateY(-50%);
 }
 
+.caught{
+  background-color: #fd0200;
+  content-visibility:hidden;
+}
+
 /* Animation */
 .anim-typewriter {
   animation: typewriter 4s steps(44) 1s 1 normal both,
