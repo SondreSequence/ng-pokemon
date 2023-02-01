@@ -1,5 +1,6 @@
 <nav class = "navbar">
     <span class = "font-bold">Navbar gutten</span>
+    <ng-container *ngIf="user !== undefined">
     <ul>
         <li>
             <a routerLink="/catalogue">Catalogue</a>
@@ -8,4 +9,5 @@
             <a routerLink="/profile">Profile</a>
         </li>
     </ul>
+</ng-container>
 </nav>
