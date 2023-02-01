@@ -8,6 +8,8 @@ import { Trainer } from '../models/trainer.model';
 const {apiPokemon} = environment;
 const {apiTrainers} = environment;
 
+
+
 @Injectable({
   providedIn: 'root'
 })
