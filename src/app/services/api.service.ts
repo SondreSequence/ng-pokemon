@@ -1,9 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map,Observable, switchMap } from 'rxjs';
+import { map,Observable, of, switchMap, tap } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
+import { StorageKeys } from '../enum/storage-keys.enum';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
+import { StorageUtil } from '../utils/storage.util';
 
 const {apiPokemon} = environment;
 const {apiTrainers} = environment;
@@ -34,18 +36,23 @@ export class ApiService {
           if(trainer === undefined){ // Trainer does not exist
             return this.createTrainer(username)
           }
+          return of(trainer);
+        }),
+        tap((trainer: Trainer) =>{
+          StorageUtil.storageSave<Trainer>(StorageKeys.Trainer, trainer);
         })
       )
   }
 
   private createTrainer(username: string): Observable<Trainer>{
     const trainer = {
-      username
+      username,
+      pokemon: []
     }
 
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
-      "x-api-key": ""
+      "x-api-key": "pullapydde"
     });
     
     return this.http.post<Trainer>(apiTrainers, trainer,{
