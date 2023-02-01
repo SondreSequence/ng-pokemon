@@ -18,33 +18,21 @@
     margin: 15px;
 }
 
-.minimize {
-  width: 200px;
-  height: 200px;
-  transition: all 0.5s ease-out;
-  transform: scale(1);
-}
-
 .minimize.shrink {
-  width: 0;
-  height: 0;
-  transform: scale(0);
+  animation: move 5s;
 }
 
 @keyframes move {
   from {
-    transform: translateX(0);
+    transform: scale(1);
   }
   to {
-    transform: translateX(100px);
+    transform: scale(0);
   }
 }
-
-
   .card-container {
     display: flex;
     flex-wrap: wrap;
-
   }
 
 button {

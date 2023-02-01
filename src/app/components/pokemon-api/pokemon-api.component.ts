@@ -17,7 +17,7 @@ export class PokemonApiComponent implements OnInit {
   public pokemonArray: { name: string, image: string }[] = [];
 
   public onButtonClick(pokemon: { name: string, image: string }, pokemonImg: HTMLElement ) {
-    pokemonImg.className = 'shrink';
+    pokemonImg.className = 'minimize shrink';
   }
 
   public handleMouseEnter(pokemonImg: HTMLElement){
