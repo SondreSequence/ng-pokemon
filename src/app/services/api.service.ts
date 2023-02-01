@@ -2,10 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map,Observable, of, switchMap, tap } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
-import { StorageKeys } from '../enum/storage-keys.enum';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
-import { StorageUtil } from '../utils/storage.util';
+
 
 const {apiPokemon} = environment;
 const {apiTrainers} = environment;
@@ -37,9 +36,6 @@ export class ApiService {
             return this.createTrainer(username)
           }
           return of(trainer);
-        }),
-        tap((trainer: Trainer) =>{
-          StorageUtil.storageSave<Trainer>(StorageKeys.Trainer, trainer);
         })
       )
   }
@@ -60,6 +56,10 @@ export class ApiService {
     })
 
   }
+
+/*  public getPokemonbyId(id: string): Pokemon | undefined{
+    return this._pokemon.find((pokemon: Pokemon) => pokemon.id === id)
+  }*/
 
 
   //Store Pokemon
