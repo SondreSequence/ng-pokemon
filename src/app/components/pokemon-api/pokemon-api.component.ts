@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2,} from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Pokemon } from 'src/app/models/pokemon.model';
 
@@ -8,13 +8,25 @@ import { Pokemon } from 'src/app/models/pokemon.model';
   styleUrls: ['./pokemon-api.component.css']
 })
 
+
+
 export class PokemonApiComponent implements OnInit {
 
-
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService, private renderer: Renderer2) {}
 
   public pokemonArray: { name: string, image: string }[] = [];
+
+  public onButtonClick(pokemon: { name: string, image: string }, pokemonImg: HTMLElement ) {
+    pokemonImg.className = 'shrink';
+  }
+
+  public handleMouseEnter(pokemonImg: HTMLElement){
+    pokemonImg.className = 'animate__animated animate__bounce';
+  }
+
+  public handleMouseLeave(pokemonImg: HTMLElement){
+    pokemonImg.className = '';
+  }
 
 
 ngOnInit() {

@@ -1,22 +1,13 @@
-<ul>
-    <li *ngFor="let pokemon of pokemonArray">
+<div class="main-container">
+  <div class="box">Start your pokemon adventure!
+    <i></i></div>
+<div class="card-container">
+  <ul>
+    <li class="card" *ngFor="let pokemon of pokemonArray" (mouseenter)="handleMouseEnter(pkmnImg)" (mouseleave)="handleMouseLeave(pkmnImg)">
       {{ pokemon.name }}
-      <img [src]="pokemon.image">
+      <img #pkmnImg src={{pokemon.image}}>
+      <button (click)="onButtonClick(pokemon, pkmnImg)">Catch</button>
     </li>
   </ul>
-
-<script>
-const images = document.querySelectorAll("img");
-
-images.forEach(img => {
-  img.addEventListener("mouseenter", function() {
-    this.classList.add("animate__animated animate__bounce");
-    this.style.opacity = 0.5;
-    
-  });
-  img.addEventListener("mouseleave", function() {
-    this.classList.remove("animate__animated animate__bounce");
-  });
-});
-
-</script>
+</div>
+</div>
