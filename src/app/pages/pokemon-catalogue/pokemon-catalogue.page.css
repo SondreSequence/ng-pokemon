@@ -7,6 +7,14 @@
     text-shadow:20em;
 }
 
+@font-face {
+    font-family: 'Pkmn';
+    src: url('/fonts/PixeloidSans-JR6qo.ttf') format('truetype');
+  }
+
 h1{
-    font-size: 100px;
+    font-family: "Pkmn";
+    font-size: 0px;
+    margin-top: 2px;
+    margin-bottom: 5px;
 }

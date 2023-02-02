@@ -2,9 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Pkmn';
     color: black;
-    font-size: 1.8vh;
+    font-size: 1.2vw;
 }
 
 html{
@@ -88,9 +88,6 @@ body{
   z-index: -1;
 }
 
-  
-  
-
 .pokeball{
   width: 20px;
   height: 20px;
@@ -134,14 +131,19 @@ button {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Pkmn';
+  src: url('../fonts/PixeloidSans-JR6qo.ttf') format('truetype');
+}
+
 .box {
   display: block;
   font-size: 16px;
   font-family: "Pokemon GB", Arial, sans-serif;
   border-radius: 2px;
   padding: 8px;
-  width: 21em;
-  height: 3em;
+  width: 18em;
+  height: 2.5em;
   line-height: 16px;
   margin: auto;
   margin-bottom: 10px;
