@@ -60,6 +60,13 @@ to {
   margin: 15px;
 }
 
+.card > img {
+
+  max-width: 90px;
+  max-height: 90px;
+
+}
+
 .caught {
 display: flex;
 flex-direction: column;
@@ -86,6 +93,13 @@ width: 101.1%;
 margin-left: -0.1vw;
 background-color: black;
 z-index: -1;
+}
+
+.caught > img {
+
+  max-width: 90px;
+  max-height: 90px;
+
 }
 
 .pokeball{

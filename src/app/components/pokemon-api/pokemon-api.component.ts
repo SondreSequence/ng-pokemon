@@ -18,12 +18,32 @@ export class PokemonApiComponent implements OnInit {
   public pokemonArray: { name: string, image: string }[] = [];
 
   public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
+    this.apiService.test(pokemon);
     cardElement.className = 'card animate__animated animate__flip';
     setInterval(() => {
       cardElement.className = 'caught';
       pokeball.style.display = 'block';
     }, 800);
+
   }
+
+  public rickAstely(pokeball: HTMLElement, input: HTMLElement){
+
+    let rick = {name: "Rick", image: "https://www.gifcen.com/wp-content/uploads/2022/11/rick-astley-gif-7.gif"}
+    this.pokemonArray.unshift(rick);
+    pokeball.style.display = 'none';
+    input.className = '';
+    setInterval(() => {
+      input.className = "form-text anim-typewriter";
+      //pkmnImg.className = "pokeball animate__animated animate__headShake animate__infinite";
+      input.innerHTML = "Never gonna give you up!";
+      //console.log("NAME " + pkmnImg.className)
+    }, 3);
+  }
+
+  public isHTMLImageElement(element: EventTarget | null): element is HTMLImageElement {
+    return element instanceof HTMLImageElement;
+}
 
  public inputChange(pokemon: Pokemon, input: HTMLElement ) {
     input.className = '';

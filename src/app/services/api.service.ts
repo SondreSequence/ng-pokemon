@@ -28,20 +28,28 @@ export class ApiService {
     })
   )}
 
-  /*private createTrainer(username: string, id: number): Observable<Trainer>{
-    const user = {
-      id,
-      username
-    }
-
-    const headers = new HttpHeaders({
-      "Content-Type": "applicant/json",
-      "x-api-key" : "GET API KEY"
-    })
-
-  }*/
 
 
-  //Store Pokemon
+  public test(pokemon: Pokemon){
 
+    const previousMons = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
+    console.log(previousMons);
+    const allMons = [...previousMons, pokemon];
+  
+
+    sessionStorage.setItem("pokemon-trainers", JSON.stringify(allMons));
+
+    fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${1}`, {
+      method: 'PATCH', // NB: Set method to PATCH
+      headers: {
+          'X-API-Key': "pullapydde",
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          // Provide new Pokémon to add trainer with id 1
+          pokemon: allMons
+      })
+  })
+  
+  }
 }
