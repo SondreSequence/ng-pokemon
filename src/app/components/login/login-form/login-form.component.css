@@ -1,13 +1,58 @@
-.form-text {
-  position: relative;
-  top: 50%;
-  width: 24em;
-  margin: 0 auto;
-  border-right: 2px solid rgba(255, 255, 255, 0.75);
-  font-size: 50%;
-  white-space: nowrap;
-  overflow: hidden;
-  transform: translateY(-50%);
+.input-field {
+  display: flex;
+  width: 32.5vw;
+  max-width: 135px;
+  font-family: pkmn;
+  align-self: center;
+  font-size: 1.5vw;
+
+  max-height: 5vw;
+  padding: 0.5vw;
+  border: 1px solid white;
+  box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black,
+    inset 0 0 0 1px black;
+  border-radius: 2px;
+}
+::placeholder {
+  opacity: 1;
+  font-family: pkmn;
+}
+
+@media only screen and (min-width: 480px) {
+  .input-field {
+    font-size: 1vw;
+  }
+}
+@media only screen and (min-width: 680px) {
+  .input-field {
+    font-size: 0.8vw;
+  }
+}
+
+.login-button {
+  background-color: white;
+  border: 2px solid black;
+  align-self: center;
+  max-width: 25px;
+  max-height: 25px;
+  border-radius: 999px;
+  padding: 1%;
+  margin-left: 1%;
+  width: auto;
+  height: 8vw;
+}
+
+.pokeball {
+  height: 100%;
+  width: auto;
+  max-height: 33px;
+  max-width: 33px;
+  justify-self: end;
+}
+
+.pokeball:hover {
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 0.7s; /* don't forget to set a duration! */
 }
 
 /* Animation */

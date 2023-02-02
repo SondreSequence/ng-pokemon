@@ -3,16 +3,21 @@
   #loginForm="ngForm"
   (ngSubmit)="loginSubmit(loginForm)"
 >
-  <fieldset class="">
+  <fieldset class="flex">
     <input
       type="text"
       ngModel
       #username="ngModel"
       name="username"
       id="username"
-      class="border border-slate-300 p-2 rounded"
-      placeholder="Gølvert Mjøk"
+      class="input-field"
+      placeholder="Ash Ketchum"
     />
   </fieldset>
-  <button type="submit" class="login-button rounded">Login</button>
+  <button type="submit" class="login-button rounded">
+    <img
+      class="pokeball"
+      src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png"
+    />
+  </button>
 </form>
