@@ -7,19 +7,6 @@
     font-size: 1.2vw;
 }
 
-html{
-  min-height: 100%;
-  overflow: hidden;
-}
-body{
-  height: calc(100vh - 8em);
-  padding: 4em;
-  color: rgba(255,255,255,.75);
-  font-family: 'Anonymous Pro', monospace;  
-  background-color: rgb(25,25,25);  
-}
-
-
 .form-text {
   display: block;
   position: relative;
@@ -105,11 +92,7 @@ body{
     transform: scale(0);
   }
 }
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    font-family: "Pokemon GB", Arial, sans-serif;
-  }
+ 
 
 button {
     background-color: #fa2a2a;
@@ -136,8 +119,16 @@ button {
   src: url('../fonts/PixeloidSans-JR6qo.ttf') format('truetype');
 }
 
+.boxparent{
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+}
+
 .box {
   display: block;
+  position: sticky;
+  top: 0;
   font-size: 16px;
   font-family: "Pokemon GB", Arial, sans-serif;
   border-radius: 2px;

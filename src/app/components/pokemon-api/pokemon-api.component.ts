@@ -12,7 +12,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 
 export class PokemonApiComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private renderer: Renderer2) {}
+  constructor(private apiService: ApiService) {}
 
   public pokemonArray: { name: string, image: string }[] = [];
 
@@ -24,9 +24,13 @@ export class PokemonApiComponent implements OnInit {
     }, 800);
   }
 
- /*  public inputChange(pokemon: { name: string, image: string }, input: HTMLElement ) {
-    pokemonImg.className = 'card animate__animated animate__flip';
-  } */
+ public inputChange(pokemon: { name: string, image: string }, input: HTMLElement ) {
+    input.className = '';
+    setInterval(() => {
+      input.className = "form-text anim-typewriter";
+    }, 2);
+    input.innerHTML = "You caught " + pokemon.name + "!";
+  } 
 
   public handleMouseEnter(pokemonImg: HTMLElement){
     pokemonImg.className = 'animate__animated animate__bounce';
@@ -43,7 +47,7 @@ ngOnInit() {
   //Won't request data from the api if it's already stored in the sessionStorage
   if (!pokemons.length) {
     console.log("Activated")
-    this.apiService.getPokemon().subscribe(
+     this.pokemonArray = pokemons;this.apiService.getPokemon().subscribe(
       (response: Pokemon | undefined) => {
         pokemons = response?.results.map((element, index) => {
           let number = JSON.stringify(element.url).split('/')[6];
@@ -51,10 +55,10 @@ ngOnInit() {
           return {
             name: pkmnname.replace(pkmnname.charAt(0),pkmnname.charAt(0).toUpperCase()),
             image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png"
-          };
+        };
+
         });
         sessionStorage.setItem("pokemons", JSON.stringify(pokemons));
-        this.pokemonArray = pokemons;
       },
       error => {
         console.error(error);
