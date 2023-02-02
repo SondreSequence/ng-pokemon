@@ -1,15 +1,9 @@
-<div>
-  <h1 class="form-text anim-typewriter">
-    Please type in you trainer name below
-  </h1>
-</div>
-
 <form
-  class="flex flex-row mt-5"
+  class="flex flex-row justify-center"
   #loginForm="ngForm"
   (ngSubmit)="loginSubmit(loginForm)"
 >
-  <fieldset class="mb-3">
+  <fieldset class="">
     <input
       type="text"
       ngModel
@@ -20,5 +14,5 @@
       placeholder="Gølvert Mjøk"
     />
   </fieldset>
-  <button type="submit" class="bg-black p-2 rounded text-white">Login</button>
+  <button type="submit" class="login-button rounded">Login</button>
 </form>

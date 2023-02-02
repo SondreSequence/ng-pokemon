@@ -19,15 +19,59 @@
   height: 100vh;
 }
 
-.box {
-  display: block;
+.container {
+  display: flex;
+  background-color: rgb(249, 249, 249);
+  border-radius: 2vw;
   align-self: center;
-  font-size: 13px;
+  justify-content: center;
+  row-gap: 5vw;
+  flex-direction: column;
+  height: 30vw;
+  max-height: 304px;
+  width: 60vw;
+  max-width: 610px;
+}
+
+.form-text {
+  text-align: left;
+  align-self: center;
+  top: 50%;
+
+  margin: 0;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 1.8vw;
+
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+
+/* Animation */
+.anim-typewriter {
+  animation: typewriter 2s steps(44) 1s 1 normal both;
+}
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 24em;
+  }
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   font-family: "Pokemon GB", Arial, sans-serif;
   border-radius: 2px;
-  padding: 2vw;
-  width: 50vw;
-  height: 20vw;
+  padding: 8px;
+  width: 40vw;
+  max-width: 413px;
+  height: 6vw;
+  max-height: 62px;
   line-height: 16px;
   margin: auto;
   margin-bottom: 5px;
@@ -38,6 +82,7 @@
     inset 0 0 0 1px black;
 }
 .box > i {
+  justify-self: flex-end;
   width: 0;
   height: 0;
   border: 5px solid transparent;
