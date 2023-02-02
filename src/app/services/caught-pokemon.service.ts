@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ApplicationInitStatus, Injectable } from '@angular/core';
+import { finalize, Observable } from 'rxjs';
 import { enviroment } from 'src/enviroments/enviroment.prod';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
@@ -13,11 +14,6 @@ const {API_KEY, apiTrainers} = enviroment;
 })
 export class CaughtPokemonService {
 
-  //Get pokemon based on name
-
-  //Patch request with the user id and the pokemon
-
-
   constructor(
     private http: HttpClient,
     private readonly apiService: ApiService,
@@ -25,7 +21,7 @@ export class CaughtPokemonService {
   ) { }
 
 
-  public addToCaughtPokemon(pokemon: Pokemon | undefined): void{
+  public addToCaughtPokemon (pokemon: Pokemon | undefined): Observable<any>{
 
     if(!this.userService.user){
       throw new Error("addToCaughtPokemon: There is no user")
@@ -37,9 +33,14 @@ export class CaughtPokemonService {
         throw new Error("addToCaughtPokemon: Pokemon is already caught")
       }
     }
-
-    this.http.patch(`${apiTrainers}/${user.id}`, {
+    const headers = new HttpHeaders({
+      'content-type': 'application/json',
+      'x-api-key' : API_KEY
+    })
+    return this.http.patch(`${apiTrainers}/${user.id}`, {
       caughPokemon: [...user.Pokemon, pokemon]
+    }, {
+      headers
     })
   }
 }
