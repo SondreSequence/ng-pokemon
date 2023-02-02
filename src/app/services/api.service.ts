@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map,Observable } from 'rxjs';
+import { defaultThrottleConfig } from 'rxjs/internal/operators/throttle';
 import { environment } from 'src/enviroments/enviroment';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';

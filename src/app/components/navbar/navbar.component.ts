@@ -11,7 +11,7 @@ export class NavbarComponent {
 
 
   get user(): Trainer | undefined{
-    return this.userService.user
+    return this.userService.user;
   }
   constructor(
     private readonly userService: UserService
