@@ -31,14 +31,12 @@ export class ApiService {
 
 
   public test(pokemon: Pokemon){
-
-    const previousMons = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
-    console.log(previousMons);
-    const allMons = [...previousMons, pokemon];
   
+    let previousMons = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
+    console.log(previousMons);
 
+    const allMons = [...previousMons, pokemon]; //IS not iterable if empty make sure u return just pokemon if it's not iterable.
     sessionStorage.setItem("pokemon-trainers", JSON.stringify(allMons));
-
     fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${1}`, {
       method: 'PATCH', // NB: Set method to PATCH
       headers: {
@@ -50,6 +48,5 @@ export class ApiService {
           pokemon: allMons
       })
   })
-  
   }
 }
