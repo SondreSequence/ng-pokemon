@@ -1,0 +1,1 @@
+export interface APIResponse {  results: Array<{ name: string; url: string; }>; }
