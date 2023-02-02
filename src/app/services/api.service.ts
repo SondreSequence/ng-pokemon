@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map,Observable } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
+import { APIResponse } from '../models/apiResponse.model';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
 
@@ -16,8 +17,8 @@ const {apiTrainers} = environment;
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  public getPokemon(): Observable<Pokemon|undefined>{
-    return this.http.get<Pokemon>(`${apiPokemon}`)}
+  public getPokemon(): Observable<APIResponse>{
+    return this.http.get<APIResponse>(`${apiPokemon}`)}
   
   public getTrainer(username:string): Observable<Trainer|undefined>{
     return this.http.get<Trainer[]>(`${apiTrainers}?username=${username}`)
@@ -27,20 +28,28 @@ export class ApiService {
     })
   )}
 
-  /*private createTrainer(username: string, id: number): Observable<Trainer>{
-    const user = {
-      id,
-      username
-    }
-
-    const headers = new HttpHeaders({
-      "Content-Type": "applicant/json",
-      "x-api-key" : "GET API KEY"
-    })
-
-  }*/
 
 
-  //Store Pokemon
+  public test(pokemon: Pokemon){
 
+    const previousMons = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
+    console.log(previousMons);
+    const allMons = [...previousMons, pokemon];
+  
+
+    sessionStorage.setItem("pokemon-trainers", JSON.stringify(allMons));
+
+    fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${1}`, {
+      method: 'PATCH', // NB: Set method to PATCH
+      headers: {
+          'X-API-Key': "pullapydde",
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          // Provide new Pokémon to add trainer with id 1
+          pokemon: allMons
+      })
+  })
+  
+  }
 }

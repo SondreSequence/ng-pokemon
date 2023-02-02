@@ -1,3 +1,6 @@
+
 export interface Pokemon {
-  results: [{ name: string; url: string }];
+name: string; image: string;
 }
+
+
