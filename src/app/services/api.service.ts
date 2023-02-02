@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map,Observable } from 'rxjs';
 import { defaultThrottleConfig } from 'rxjs/internal/operators/throttle';
 import { environment } from 'src/enviroments/enviroment';
+import { APIResponse } from '../models/apiResponse.model';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
 
@@ -17,8 +18,8 @@ const {apiTrainers} = environment;
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  public getPokemon(): Observable<Pokemon|undefined>{
-    return this.http.get<Pokemon>(`${apiPokemon}`)}
+  public getPokemon(): Observable<APIResponse>{
+    return this.http.get<APIResponse>(`${apiPokemon}`)}
   
   public getTrainer(username:string): Observable<Trainer|undefined>{
     return this.http.get<Trainer[]>(`${apiTrainers}?username=${username}`)
