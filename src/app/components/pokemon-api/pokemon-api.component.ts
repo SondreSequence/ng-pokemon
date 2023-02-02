@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2,} from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { APIResponse } from 'src/app/models/apiResponse.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
 
 @Component({
@@ -16,7 +17,7 @@ export class PokemonApiComponent implements OnInit {
 
   public pokemonArray: { name: string, image: string }[] = [];
 
-  public onButtonClick(pokemon: { name: string, image: string }, cardElement: HTMLElement, pokeball: HTMLElement ) {
+  public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
     cardElement.className = 'card animate__animated animate__flip';
     setInterval(() => {
       cardElement.className = 'caught';
@@ -24,7 +25,7 @@ export class PokemonApiComponent implements OnInit {
     }, 800);
   }
 
- public inputChange(pokemon: { name: string, image: string }, input: HTMLElement ) {
+ public inputChange(pokemon: Pokemon, input: HTMLElement ) {
     input.className = '';
     setInterval(() => {
       input.className = "form-text anim-typewriter";
@@ -45,27 +46,25 @@ ngOnInit() {
   let pokemons = JSON.parse(sessionStorage.getItem("pokemons") || "[]");
 
   //Won't request data from the api if it's already stored in the sessionStorage
-  if (!pokemons.length) {
+  if (!this.pokemonArray.length) {
     console.log("Activated")
-     this.pokemonArray = pokemons;this.apiService.getPokemon().subscribe(
-      (response: Pokemon | undefined) => {
-        pokemons = response?.results.map((element, index) => {
-          let number = JSON.stringify(element.url).split('/')[6];
-          let pkmnname = JSON.stringify(element.name).replace(/\"/g, "");
-          return {
-            name: pkmnname.replace(pkmnname.charAt(0),pkmnname.charAt(0).toUpperCase()),
-            image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png"
-        };
-
-        });
-        sessionStorage.setItem("pokemons", JSON.stringify(pokemons));
+    this.apiService.getPokemon().subscribe(
+      (response: APIResponse) => {
+      this.pokemonArray = response.results.map((element, index) => {
+      let number = element.url.split('/')[6];
+      let pkmnname = element.name;
+      return {
+      name: pkmnname.charAt(0).toUpperCase() + pkmnname.slice(1),
+      image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png"
+      };
+      });
+      sessionStorage.setItem("pokemons", JSON.stringify(this.pokemonArray));
       },
       error => {
-        console.error(error);
+      console.error(error);
       }
-    );
-  }
-  else{
+      );
+  } else {
     this.pokemonArray = pokemons;
   }
     
