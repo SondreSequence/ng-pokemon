@@ -25,7 +25,10 @@ export class UserService {
 
   public pokemonIsCaught(pokemonName: string): boolean{
     if(this._user){
-      return Boolean(this.user?.Pokemon.find((pokemon: Pokemon) => pokemon.results[0].name === pokemonName))
+
+      console.log(this._user)
+      let user: Trainer = JSON.parse(sessionStorage.getItem('pokemon-trainers')|| "[]")
+      return Boolean(user.pokemon.find((pokemon: Pokemon) => pokemon.name === pokemonName))
     }
     return false;
 

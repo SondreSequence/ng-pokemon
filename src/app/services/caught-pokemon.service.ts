@@ -21,26 +21,56 @@ export class CaughtPokemonService {
   ) { }
 
 
-  public addToCaughtPokemon (pokemon: Pokemon | undefined): Observable<any>{
+  public addToCaughtPokemon (caughtPokemon: Pokemon | undefined) {
 
     if(!this.userService.user){
       throw new Error("addToCaughtPokemon: There is no user")
     }
 
-    const user: Trainer = this.userService.user
-    if(pokemon){
-      if(this.userService.pokemonIsCaught(pokemon.results[0].name)){
+    const user: Trainer = JSON.parse(sessionStorage.getItem('pokemon-trainers')|| "[]")
+    if(caughtPokemon){
+      if(this.userService.pokemonIsCaught(caughtPokemon.name)){
         throw new Error("addToCaughtPokemon: Pokemon is already caught")
       }
     }
+
+        
+const apiURL = 'https://magical-olivine-windflower.glitch.me'
+const apiKey = 'pullapydde'
+fetch(`${apiURL}/trainers/${'id'}`, {
+        method: 'PATCH', // NB: Set method to PATCH
+        headers: {
+            'X-API-Key': apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            // Provide new Pokémon to add trainer with id 1
+            pokemon: [user.pokemon, caughtPokemon]
+        })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Could not update trainer')
+      }
+      return response.json()
+    })
+    .then(updatedTrainer => {
+      console.log(updatedTrainer)
+      sessionStorage.setItem("pokemon-trainers",updatedTrainer)
+      
+    })
+    .catch(error => {
+    })
+  }
+
+
+    /*
     const headers = new HttpHeaders({
       'content-type': 'application/json',
       'x-api-key' : API_KEY
     })
-    return this.http.patch(`${apiTrainers}/${user.id}`, {
-      caughPokemon: [...user.Pokemon, pokemon]
-    }, {
-      headers
-    })
+    console.log("Trying to catch " + pokemon?.name);
+    return this.http.patch(`${apiTrainers}/${user.id}`, 
+    {caughtPokemon: [...user.pokemon, pokemon]} , {headers})
+    */
   }
-}
