@@ -44,15 +44,27 @@ export class CaughtPokemonService {
   
   }
 
+  public removeFromCaughtPokemon(pokemon:Pokemon){
+    
+    
+    const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
+    const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
 
+    const allMons = previousMons.length === 0 ? [pokemon] : [...previousMons, pokemon];
+    sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
+    console.log(previousMons);
 
-    /*
-    const headers = new HttpHeaders({
-      'content-type': 'application/json',
-      'x-api-key' : API_KEY
-    })
-    console.log("Trying to catch " + pokemon?.name);
-    return this.http.patch(`${apiTrainers}/${user.id}`, 
-    {caughtPokemon: [...user.pokemon, pokemon]} , {headers})
-    */
+    fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
+      method: 'PATCH', // NB: Set method to PATCH
+      headers: {
+          'X-API-Key': "pullapydde",
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          // Provide new Pokémon to add trainer with id 1
+          pokemon: allMons
+      })
+  })
+  }
+
   }
