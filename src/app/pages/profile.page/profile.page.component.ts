@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Trainer } from 'src/app/models/trainer.model';
 
 @Component({
   selector: 'app-profile.page',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ProfilePageComponent {
   constructor(private readonly router: Router) {}
+
+  public trainername: Trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"").username;
   
 
 }

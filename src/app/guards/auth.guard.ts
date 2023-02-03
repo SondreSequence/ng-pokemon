@@ -27,6 +27,7 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     // AuthGuard - navigates user back to login if user is not found.
+
     if (this.userService.user) {
       return true;
     } else {

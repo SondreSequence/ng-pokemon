@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APIResponse } from 'src/app/models/apiResponse.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
-import { ApiService } from 'src/app/services/api.service';
 import { CaughtPokemonService } from 'src/app/services/caught-pokemon.service';
 
 @Component({
@@ -10,9 +8,8 @@ import { CaughtPokemonService } from 'src/app/services/caught-pokemon.service';
   styleUrls: ['./trainer-profile.component.css']
 })
 export class TrainerProfileComponent implements OnInit {
-  constructor(private apiService: ApiService, private caughtPokemonService: CaughtPokemonService) {}
-
-  public capturedPokemonArray: { name: string, image: string }[] = [];
+  constructor(private caughtPokemonService: CaughtPokemonService) {}
+  public caughtPokemonArray: Pokemon[] = [];
 
   public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
     cardElement.className = 'card animate__animated animate__flip';
@@ -20,13 +17,35 @@ export class TrainerProfileComponent implements OnInit {
       cardElement.className = 'caught';
       pokeball.style.display = 'block';
     }, 800);
-    console.log(pokemon.name)
+    console.log(pokemon.captureID)
 
     this.caughtPokemonService.removeFromCaughtPokemon(pokemon)
+    this.caughtPokemonArray.splice(pokemon.captureID, 1);
+    for(let i = 0; i<this.caughtPokemonArray.length; i++)
+    {
+      this.caughtPokemonArray[i].captureID = i;
+    }
   }
 
+  public inputChange(pokemon: Pokemon, input: HTMLElement ) {
+    input.className = '';
+    setTimeout(() => {
+      input.className = "form-text anim-typewriter";
+    }, 1);
+    input.innerHTML = "You caught " + pokemon.name + "!";
+  } 
+
+
+  public handleMouseEnter(pokemonImg: HTMLElement){
+      pokemonImg.className = 'animate__animated animate__bounce';
+    setTimeout(() => {
+      pokemonImg.className = '';
+    }, 1000);
+  }
+
+
   ngOnInit() {
-    this.capturedPokemonArray = JSON.parse(sessionStorage.getItem("captured-pokemon") || "[]");  
-    }
+    this.caughtPokemonArray = JSON.parse(sessionStorage.getItem("captured-pokemon") || "[]");
+  }
 }
 

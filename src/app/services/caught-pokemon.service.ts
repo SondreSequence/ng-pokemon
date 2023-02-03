@@ -44,7 +44,6 @@ export class CaughtPokemonService {
   }
 
     sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
-    console.log(previousMons);
 
     fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
@@ -60,15 +59,16 @@ export class CaughtPokemonService {
   
   }
 
-  public removeFromCaughtPokemon(pokemon:Pokemon){
-    
-    
-    const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
+  public removeFromCaughtPokemon(pokemon: Pokemon){
+      
+    let previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
     const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
-
-    const allMons = previousMons.length === 0 ? [pokemon] : [...previousMons, pokemon];
-    sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
-    console.log(previousMons);
+    previousMons.splice(pokemon.captureID, 1);
+    for(let i= 0; i<previousMons.length; i++)
+    {
+      previousMons[i].captureID = i;
+    }
+    sessionStorage.setItem("captured-pokemon", JSON.stringify(previousMons));
 
     fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
@@ -78,7 +78,7 @@ export class CaughtPokemonService {
       },
       body: JSON.stringify({
           // Provide new Pokémon to add trainer with id 1
-          pokemon: allMons
+          pokemon: previousMons
       })
   })
   }

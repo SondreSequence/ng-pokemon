@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Trainer } from 'src/app/models/trainer.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent{
 
 
   get user(): Trainer | undefined{
@@ -17,5 +17,7 @@ export class NavbarComponent {
     private readonly userService: UserService
   )
   {}
+
+  
 
 }
