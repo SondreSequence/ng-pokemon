@@ -14,19 +14,30 @@ export class PokemonApiComponent implements OnInit {
   constructor(private apiService: ApiService, private caughtPokemonService: CaughtPokemonService) {}
   public pokemonArray: Pokemon[] = [];
 
-  public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
+  public onButtonClick(pokemon : Pokemon, pokemonImg : HTMLImageElement, cardElement: HTMLElement, pokeball: HTMLElement ) {
     cardElement.className = 'card animate__animated animate__flip';
+
     setTimeout(() => {
       cardElement.className = 'caught';
       pokeball.style.display = 'block';
     }, 800);
-    console.log(pokemon.name)
-    console.log(cardElement.id)
-    this.caughtPokemonService.addToCaughtPokemon(pokemon)
+
+    if(Math.floor((Math.random() * 4) + 1)==1&&pokemon.name!="Rick Astely"){
+      pokemonImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+pokemon.id+".png";
+      pokemonImg.className="animate__animated animate__wobble";
+      setTimeout(() => {
+        cardElement.className = "shiny";
+      }, 801);
+    }
+
+    this.caughtPokemonService.addToCaughtPokemon(pokemon);
+    console.log("CaptureID: " + pokemon.captureID)
+
+
   }
 
   public rickAstely(cardContainer: HTMLDivElement, pokeball: HTMLElement, input: HTMLElement){
-    let rick = {name: "Rick Astely", image: "assets/rick.png" ,id: 0}
+    let rick = {name: "Rick Astely", image: "assets/rick.png", id: 0, captureID: 0}
 
     this.pokemonArray.unshift(rick);
     pokeball.className = "pokeball animate__animated animate__rollOut"
@@ -79,7 +90,8 @@ ngOnInit() {
       return {
       name: pkmnname.charAt(0).toUpperCase() + pkmnname.slice(1),
       image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png",
-      id: parseInt(number)};
+      id: parseInt(number),
+      captureID: 0};
       });
       sessionStorage.setItem("pokemons", JSON.stringify(this.pokemonArray));
       },
