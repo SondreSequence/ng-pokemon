@@ -24,7 +24,7 @@ The server will then run on port: 4200.
 
 ## How to use as a player:
 
-1. Enter the site on this link: 
+1. Enter the site on this link: ng-pokemon.vercel.app/login
 2. Enter a desired username
 3. Start capturing pokemon in the catalogue
 4. Go to your profile and press the cards to release them.
