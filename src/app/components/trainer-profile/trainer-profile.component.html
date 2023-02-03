@@ -1,5 +1,13 @@
 <main class = "mainContainer">
     <div class = "trainerPokemonBox">
-
+        <div #cardContainer class="cardcontainer">
+            <ul>
+              <li #cardElement class="card" *ngFor="let pokemon of capturedPokemonArray">
+                {{ pokemon.name }}
+                <img #pkmnImg [src]="pokemon.image">
+                <img #pokeball style="display: none;" class="pokeball" src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png">
+              </li>
+            </ul>
+          </div>
     </div>
 </main>
