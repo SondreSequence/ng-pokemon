@@ -7,19 +7,59 @@
   font-size: 1rem;
 }
 
-html{
-min-height: 100%;
-overflow: hidden;
-}
-body{
-height: calc(100vh - 8em);
-padding: 4em;
-color: rgba(255,255,255,.75);
-font-family: 'Anonymous Pro', monospace;  
-background-color: rgb(25,25,25);  
-}
+@font-face {
+  font-family: 'Pkmn';
+  src: url('../fonts/PixeloidSans-JR6qo.ttf') format('truetype');
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Pokemon GB", Arial, sans-serif;
+  }
 
 
+  .boxparent {
+    position: absolute;
+    height: 7524px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  
+  .box {
+    display: block;
+    font-size: 16px;
+    border-radius: 2px;
+    padding: 8px;
+    width: 22em;
+    height: 3em;
+    line-height: 16px;
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 0 1px 0 1px black,
+    inset 0 1px 0 1px black,
+    0 0 0 1px black,
+    inset 0 0 0 1px black;
+    position: fixed;
+    bottom: 20px; /* add this */
+    }
+    
+    
+    
+    
+    
+  
+  .box > i {
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: black;
+  margin-top: 2.%;
+  animation: bounce 0.5s ease-in-out 0 infinite alternate;
+  float: right;
+}
+
+/* Input Animation */
 .form-text {
 display: block;
 position: relative;
@@ -33,7 +73,6 @@ overflow: hidden;
 transform: translateY(-50%);
 }
 
-/* Animation */
 .anim-typewriter {
 animation: typewriter 2s steps(44) 0.5s 1 normal both;
 }
@@ -46,19 +85,21 @@ to {
 }
 }
 
-
-
-
 .card {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: rgb(250, 250, 250);
+  background-color:aliceblue;
+  background-color: rgb(237, 236, 236);
   border-radius: theme('borderRadius.lg');
   padding: theme('spacing.6');
   box-shadow: theme('boxShadow.lg');
   margin: 15px;
+  z-index: 1;
 }
+.card > img {
+  max-width: 200px;
+  max-height: 100px;}
 
 .caught {
 display: flex;
@@ -72,9 +113,7 @@ padding: theme('spacing.6');
 box-shadow: theme('boxShadow.lg');
 margin: 15px;
 position: relative;
-z-index: 1;
 }
-
 .caught::before {
 content: "";
 position: absolute;
@@ -85,94 +124,20 @@ height: 2.9px;
 width: 101.1%;
 margin-left: -0.1vw;
 background-color: black;
-z-index: -1;
+z-index: 1;
+}
+.caught > img {
+  max-width: 200px;
+  max-height: 100px;
+  z-index: 2;
 }
 
-.pokeball{
-width: 20px;
-height: 20px;
-}
-
-.minimize.shrink {
-animation: move 1s;
-}
-
-@keyframes move {
-from {
-  transform: scale(1);
-}
-to {
-  transform: scale(0);
-}
-}
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  font-family: "Pokemon GB", Arial, sans-serif;
-}
-
-button {
-  background-color: #fa2a2a;
-  color: white;
-  margin-bottom: 5px;
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+.pokeball {
+  position:sticky;
+  bottom: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 
-/* @font-face kit by Fonts2u (http://www.fonts2u.com) */
-@font-face {
-font-family: "Pokemon GB";
-src: url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.eot?") format("eot"),
-     url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.woff") format("woff"),
-     url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.ttf") format("truetype"),
-     url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.svg#PokemonGB") format("svg");
-font-weight: normal;
-font-style: normal;
-}
 
-@font-face {
-font-family: 'Pkmn';
-src: url('../fonts/PixeloidSans-JR6qo.ttf') format('truetype');
-}
-
-.box {
-display: block;
-font-size: 16px;
-font-family: "Pokemon GB", Arial, sans-serif;
-border-radius: 2px;
-padding: 8px;
-width: 18em;
-height: 2.5em;
-line-height: 16px;
-margin: auto;
-margin-bottom: 10px;
-margin-top: 1px;
-background: white;
-border: 1px solid white;
-box-shadow: 0 1px 0 1px black,
-            inset 0 1px 0 1px black,
-            0 0 0 1px black,
-            inset 0 0 0 1px black;
-}
-.box > i {
-width: 0;
-height: 0;
-border: 5px solid transparent;
-border-top-color: black;
-margin-top: 2.%;
-animation: bounce 0.5s ease-in-out 0 infinite alternate;
-float: right;
-}
-
-@keyframes bounce {
-from { margin-top: 20px; }
-to { margin-top: 23px; }
-}
-
-.pokeballs {
-width: 200px;
-height: 300px;
-position: relative;
-
-}

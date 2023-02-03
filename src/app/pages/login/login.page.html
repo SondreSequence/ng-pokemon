@@ -1,5 +1,19 @@
-<main class="main-container bg-slate-600">
-  <div class="box">
+<main class="main-container bg-white">
+  <div class="logo-container">
+    <img
+      class="pokemon-logo"
+      src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
+    />
+    <h1 class="logo-text">trainer</h1>
+  </div>
+
+  <div class="container shadow">
     <app-login-form (login)="handleLogin()"></app-login-form>
+    <div class="box">
+      <h1 class="form-text anim-typewriter">
+        Please type your trainer name above!
+      </h1>
+      <i></i>
+    </div>
   </div>
 </main>

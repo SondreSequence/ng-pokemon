@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 import { map,Observable } from 'rxjs';
 import { defaultThrottleConfig } from 'rxjs/internal/operators/throttle';
 import { environment } from 'src/enviroments/enviroment';
+import { StorageKeys } from '../enums/storage-keys.enum';
 import { APIResponse } from '../models/apiResponse.model';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
+import { storageUtil } from '../utils/storage.util';
 
 const {apiPokemon} = environment;
 const {apiTrainers} = environment;
@@ -29,20 +31,5 @@ export class ApiService {
     })
   )}
 
-  /*private createTrainer(username: string, id: number): Observable<Trainer>{
-    const user = {
-      id,
-      username
-    }
-
-    const headers = new HttpHeaders({
-      "Content-Type": "applicant/json",
-      "x-api-key" : "GET API KEY"
-    })
-
-  }*/
-
-
-  //Store Pokemon
 
 }

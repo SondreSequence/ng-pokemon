@@ -1,50 +1,120 @@
-@font-face {
-  font-family: "Pokemon GB";
-  src: url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.eot?")
-      format("eot"),
-    url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.woff")
-      format("woff"),
-    url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.ttf")
-      format("truetype"),
-    url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.svg#PokemonGB")
-      format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .main-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100vw;
   height: 100vh;
 }
 
-.box {
-  display: block;
+.logo-container {
+  display: grid;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pokemon-logo {
+  display: flex;
+  justify-self: center;
+  width: 40vw;
+
+  height: auto;
+}
+
+.pokemon-logo:hover {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: rubberBand;
+  animation-duration: 1s;
+}
+
+.logo-text {
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  font-size: 5vw;
+
+  bottom: 4vw;
+  position: relative;
+  font-family: pkmn;
+  color: rgb(44, 113, 183);
+}
+
+.container {
+  display: flex;
+  background-color: rgb(255, 218, 71);
+  border: 1vw solid rgb(74, 127, 180);
   align-self: center;
-  font-size: 13px;
-  font-family: "Pokemon GB", Arial, sans-serif;
+  justify-content: center;
+  flex-direction: column;
+  height: 30vw;
+  max-height: 125px;
+  width: 60vw;
+  max-width: 250px;
+  margin-bottom: 30px;
+  box-shadow: inset -0.7vw 1vw rgb(191, 158, 17);
+}
+
+.form-text {
+  text-align: left;
+  align-self: center;
+
+  font-family: pkmn;
+
+  font-size: 1.5vw;
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.anim-typewriter {
+  animation: typewriter 2s steps(44) 1s 1 normal both;
+}
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 24em;
+  }
+}
+
+.box {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  text-align: center;
+  font-family: pkmn;
   border-radius: 2px;
-  padding: 2vw;
-  width: 50vw;
-  height: 20vw;
+  padding: 1vw;
+  width: 40vw;
+  max-width: 170px;
+  height: 6vw;
+  max-height: 52px;
   line-height: 16px;
   margin: auto;
   margin-bottom: 5px;
-  margin-top: 1px;
+  margin-top: 2%;
   background: white;
   border: 1px solid white;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black,
     inset 0 0 0 1px black;
 }
 .box > i {
+  justify-self: flex-end;
+  align-self: center;
   width: 0;
   height: 0;
-  border: 5px solid transparent;
+  border: 0.5vw solid transparent;
   border-top-color: black;
   margin-top: 2%;
   animation: bounce 0.5s ease-in-out 0 infinite alternate;
   float: right;
+}
+
+@font-face {
+  font-family: "Pkmn";
+  src: url("src\app\components\fonts\PixeloidSans-JR6qo.ttf") format("truetype");
 }
 
 @keyframes bounce {
@@ -53,5 +123,56 @@
   }
   to {
     margin-top: 23px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .form-text {
+    font-size: 1vw;
+  }
+
+  .container {
+    box-shadow: inset -0.5vw 0.7vw rgb(191, 158, 17);
+  }
+}
+@media only screen and (min-width: 680px) {
+  .container {
+    border: 0.5vw solid rgb(74, 127, 180);
+  }
+  .form-text {
+    font-size: 0.7vw;
+  }
+
+  .box {
+    height: 5vw;
+  }
+
+  .container {
+    box-shadow: inset -0.3vw 0.5vw rgb(191, 158, 17);
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .form-text {
+    font-size: 0.6vw;
+  }
+  .box {
+    height: 4vw;
+  }
+
+  .box > i {
+    justify-self: flex-end;
+    align-self: center;
+    width: 0;
+    height: 0;
+    border: 0.3vw solid transparent;
+    border-top-color: black;
+    margin-top: 2%;
+    animation: bounce 0.5s ease-in-out 0 infinite alternate;
+    float: right;
+  }
+
+  .container {
+    box-shadow: inset -0.1vw 0.3vw rgb(191, 158, 17);
   }
 }

@@ -49,6 +49,30 @@ export class PokemonApiComponent implements OnInit {
     setTimeout(() => { firstLi = cardContainer.querySelector('li'); if (firstLi) firstLi.className = "card animate__animated animate__swing animate__infinite";},1000)
   }
 
+  public rickAstely(cardContainer: HTMLDivElement, pokeball: HTMLElement, input: HTMLElement){
+    let rick = {name: "Rick Astely", image: "assets/rick.png"}
+
+    this.pokemonArray.unshift(rick);
+    pokeball.className = "pokeball animate__animated animate__rollOut"
+    input.className = '';
+    
+    let firstLi : HTMLLIElement | null = null; //First element in the list
+    setTimeout(() => {
+      input.className = "form-text anim-typewriter";
+      input.innerHTML = "Never gonna give you up!";
+      
+      firstLi = cardContainer.querySelector('li');
+      if (firstLi) {
+        const firstImage = firstLi.querySelector("img");
+        if (firstImage && firstImage.style) {
+          
+          }
+        firstLi.className = "card animate__animated animate__bounceInDown";
+      }
+    }, 3);
+    setTimeout(() => { firstLi = cardContainer.querySelector('li'); if (firstLi) firstLi.className = "card animate__animated animate__swing animate__infinite";},1000)
+  }
+
  public inputChange(pokemon: Pokemon, input: HTMLElement ) {
     input.className = '';
     setTimeout(() => {
