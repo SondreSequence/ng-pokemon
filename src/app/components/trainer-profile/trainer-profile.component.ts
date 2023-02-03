@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APIResponse } from 'src/app/models/apiResponse.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
-import { ApiService } from 'src/app/services/api.service';
 import { CaughtPokemonService } from 'src/app/services/caught-pokemon.service';
 
 @Component({
@@ -10,8 +8,8 @@ import { CaughtPokemonService } from 'src/app/services/caught-pokemon.service';
   styleUrls: ['./trainer-profile.component.css']
 })
 export class TrainerProfileComponent implements OnInit {
-  constructor(private apiService: ApiService, private caughtPokemonService: CaughtPokemonService) {}
-  public pokemonArray: { name: string, image: string }[] = [];
+  constructor(private caughtPokemonService: CaughtPokemonService) {}
+  public caughtPokemonArray: Pokemon[] = [];
 
   public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
     cardElement.className = 'card animate__animated animate__flip';
@@ -21,35 +19,20 @@ export class TrainerProfileComponent implements OnInit {
     }, 800);
     console.log(pokemon.name)
 
-    this.caughtPokemonService.removeFromCaughtPokemon(pokemon)
+    this.caughtPokemonService.removeFromCaughtPokemon(2)
   }
 
+
+  public handleMouseEnter(pokemonImg: HTMLElement){
+      pokemonImg.className = 'animate__animated animate__bounce';
+    setTimeout(() => {
+      pokemonImg.className = '';
+    }, 1000);
+  }
+
+
   ngOnInit() {
-    let pokemons = JSON.parse(sessionStorage.getItem("captured-pokemon") || "[]");
-  
-    //Won't request data from the api if it's already stored in the sessionStorage
-    if (!this.pokemonArray.length) {
-      console.log("Activated")
-      this.apiService.getPokemon().subscribe(
-        (response: APIResponse) => {
-        this.pokemonArray = response.results.map((element, index) => {
-        let number = element.url.split('/')[6];
-        let pkmnname = element.name;
-        return {
-        name: pkmnname.charAt(0).toUpperCase() + pkmnname.slice(1),
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png"
-        };
-        });
-        sessionStorage.setItem("captured-pokemon", JSON.stringify(this.pokemonArray));
-        },
-        error => {
-        console.error(error);
-        }
-        );
-    } else {
-      this.pokemonArray = pokemons;
-    }
-      
-    }
+    this.caughtPokemonArray = JSON.parse(sessionStorage.getItem("captured-pokemon") || "[]");
+  }
 }
 

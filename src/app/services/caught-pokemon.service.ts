@@ -60,13 +60,13 @@ export class CaughtPokemonService {
   
   }
 
-  public removeFromCaughtPokemon(pokemon:Pokemon){
+  public removeFromCaughtPokemon(captureID: number){
     
     
     const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
     const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
 
-    const allMons = previousMons.length === 0 ? [pokemon] : [...previousMons, pokemon];
+    const allMons = previousMons.splice(captureID);
     sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
     console.log(previousMons);
 

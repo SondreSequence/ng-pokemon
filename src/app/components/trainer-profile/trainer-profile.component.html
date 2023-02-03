@@ -1,5 +1,13 @@
-<main class = "mainContainer">
-    <div class = "trainerPokemonBox">
 
+<div class="main-container">
+    <div class="boxparent">
+    <div #cardContainer class="cardcontainer">
+      <ul>
+        <li #cardElement (click)="onButtonClick(pokemon, pkmnImg, cardElement);" class="card" *ngFor="let pokemon of caughtPokemonArray" (mouseenter)="handleMouseEnter(pkmnImg)">
+          {{ pokemon.name }}
+          <img #pkmnImg [src]="pokemon.image">
+          <img #pokeball style="display: none;" class="pokeball" src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png">
+        </li>
+      </ul>
     </div>
-</main>
+    </div>
