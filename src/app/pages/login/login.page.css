@@ -50,10 +50,10 @@
   flex-direction: column;
   row-gap: 2vw;
   height: 30vw;
-  max-height: 260px;
+  /*  max-height: 260px;  */
   padding: 0vw 5%;
   width: 60vw;
-  max-width: 520px;
+  /*   max-width: 520px;  */
   margin-bottom: 30px;
   box-shadow: inset -0.7vw 1vw rgb(191, 158, 17);
 }
@@ -64,7 +64,7 @@
 
   font-family: pkmn;
 
-  font-size: 1vw;
+  font-size: 1.5vw;
 
   white-space: nowrap;
   overflow: hidden;
@@ -128,15 +128,12 @@
   }
 }
 
-/* @media only screen and (min-width: 480px) {
-  .form-text {
-    font-size: 1vw;
-  }
-
+@media only screen and (min-width: 3190px) {
   .container {
-    box-shadow: inset -0.5vw 0.7vw rgb(191, 158, 17);
+    padding: 0vw 3%;
   }
 }
+/*
 @media only screen and (min-width: 680px) {
   .container {
     border: 0.5vw solid rgb(74, 127, 180);
