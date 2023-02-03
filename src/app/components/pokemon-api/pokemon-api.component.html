@@ -1,20 +1,21 @@
 
 
-
+<div class="main-container">
 <div class="boxparent">
   <div class="box"><p #dialogbox class="form-text anim-typewriter">Click the pokemon to catch it!</p>
     <i></i>
   </div>
-  <img style="margin: 11px;" (click)="rickAstely(pokeball, dialogbox);" #pokeball class="pokeball animate__animated animate__headShake animate__infinite" src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png">
   </div>
+  <img style="margin: 11px;" (click)="rickAstely(cardContainer, pokeball, dialogbox);" #pokeball class="pokeball animate__animated animate__headShake animate__infinite" src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png">
   
-<div class="card-container">
+<div #cardContainer class="cardcontainer">
   <ul>
     <li #cardElement (click)="onButtonClick(pokemon, cardElement, pokeball); inputChange(pokemon,dialogbox)" class="card" *ngFor="let pokemon of pokemonArray" (mouseenter)="handleMouseEnter(pkmnImg)" (mouseleave)="handleMouseLeave(pkmnImg)">
       {{ pokemon.name }}
-      <img #pkmnImg [src]="pokemon.image" (load)="pkmnImg">
+      <img #pkmnImg [src]="pokemon.image">
       <img #pokeball style="display: none;" class="pokeball" src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png">
     </li>
   </ul>
+</div>
 </div>
 

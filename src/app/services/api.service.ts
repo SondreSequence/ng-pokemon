@@ -32,21 +32,27 @@ export class ApiService {
 
   public test(pokemon: Pokemon){
   
-    let previousMons = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
-    console.log(previousMons);
+    let previousMons = JSON.parse(sessionStorage.getItem("capturedPokemons")||"[]");
+    let trainer : Trainer = JSON.parse(sessionStorage.getItem("trainer")||"[]");
 
-    const allMons = [...previousMons, pokemon]; //IS not iterable if empty make sure u return just pokemon if it's not iterable.
-    sessionStorage.setItem("pokemon-trainers", JSON.stringify(allMons));
-    fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${1}`, {
+    let allMons = [pokemon];
+
+    if (previousMons && typeof previousMons === "object" && previousMons.length) {
+      allMons = [...previousMons, pokemon]; //IS not iterable if empty make sure u return just pokemon if it's not iterable. 
+    }
+    console.log("Posted " +  allMons)
+
+    sessionStorage.setItem("capturedPokemons", JSON.stringify(allMons));
+    fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
       headers: {
           'X-API-Key': "pullapydde",
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-          // Provide new Pokémon to add trainer with id 1
           pokemon: allMons
       })
   })
+
   }
 }
