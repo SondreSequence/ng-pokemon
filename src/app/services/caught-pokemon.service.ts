@@ -59,15 +59,16 @@ export class CaughtPokemonService {
   
   }
 
-  public removeFromCaughtPokemon(captureID: number){
-    
-    
-    const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
+  public removeFromCaughtPokemon(pokemon: Pokemon){
+      
+    let previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
     const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
-    previousMons.splice(captureID, 1);
-
+    previousMons.splice(pokemon.captureID, 1);
+    for(let i= 0; i<previousMons.length; i++)
+    {
+      previousMons[i].captureID = i;
+    }
     sessionStorage.setItem("captured-pokemon", JSON.stringify(previousMons));
-
 
     fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
       method: 'PATCH', // NB: Set method to PATCH

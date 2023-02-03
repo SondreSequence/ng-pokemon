@@ -19,7 +19,12 @@ export class TrainerProfileComponent implements OnInit {
     }, 800);
     console.log(pokemon.captureID)
 
-    this.caughtPokemonService.removeFromCaughtPokemon(pokemon.captureID)
+    this.caughtPokemonService.removeFromCaughtPokemon(pokemon)
+    this.caughtPokemonArray.splice(pokemon.captureID, 1);
+    for(let i = 0; i<this.caughtPokemonArray.length; i++)
+    {
+      this.caughtPokemonArray[i].captureID = i;
+    }
   }
 
 
