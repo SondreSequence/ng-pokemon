@@ -1,27 +1,36 @@
-# NgPokemon
+# Pokemon Trainer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+This program gets all first generation pokemon from an API. It lets you capture pokemon from 
+the catalogue and put the in your trainer profile. You can then release them back into the wilds.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before executing, open terminal/cmd and run the following command to install dependencies:
 
-## Code scaffolding
+```bash
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Execution
+To run the server open terminal/cmd and execute one of the following commands:
+```bash
+npm start
+```
+or
+```bash
+ng serve
+```
+The server will then run on port: 4200.
 
-## Build
+## How to use as a player:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Enter the site on this link: 
+2. Enter a desired username
+3. Start capturing pokemon in the catalogue
+4. Go to your profile and press the cards to release them.
+5. Check that your user has been updated on this link: https://magical-olivine-windflower.glitch.me/trainers
 
-## Running unit tests
+Happy hunting! :D
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contributers
+Sondre Kristoffer Reinholdtsen, Johann Braaten, Lars Joar Bjørkeland
