@@ -10,7 +10,7 @@
   
 <div #cardContainer class="cardcontainer">
   <ul>
-    <li #cardElement (click)="onButtonClick(pokemon, cardElement, pokeball); inputChange(pokemon,dialogbox)" class="card" *ngFor="let pokemon of pokemonArray" (mouseenter)="handleMouseEnter(pkmnImg)" (mouseleave)="handleMouseLeave(pkmnImg)">
+    <li #cardElement (click)="onButtonClick(pokemon, cardElement, pokeball); inputChange(pokemon,dialogbox)" class="card" *ngFor="let pokemon of pokemonArray" (mouseenter)="handleMouseEnter(pkmnImg)">
       {{ pokemon.name }}
       <img #pkmnImg [src]="pokemon.image">
       <img #pokeball style="display: none;" class="pokeball" src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png">

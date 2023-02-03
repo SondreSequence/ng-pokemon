@@ -14,7 +14,6 @@ export class PokemonApiComponent implements OnInit {
   public pokemonArray: { name: string, image: string }[] = [];
 
   public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
-    this.apiService.test(pokemon);
     cardElement.className = 'card animate__animated animate__flip';
     setTimeout(() => {
       cardElement.className = 'caught';
@@ -59,10 +58,6 @@ export class PokemonApiComponent implements OnInit {
     setTimeout(() => {
       pokemonImg.className = '';
     }, 1000);
-  }
-
-  public handleMouseLeave(pokemonImg: HTMLElement){
-    //pokemonImg.className = 'animate__animated animate__bounce';
   }
 
 
