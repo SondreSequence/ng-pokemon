@@ -12,6 +12,7 @@ import { CaughtPokemonService } from 'src/app/services/caught-pokemon.service';
 
 export class PokemonApiComponent implements OnInit {
   constructor(private apiService: ApiService, private caughtPokemonService: CaughtPokemonService) {}
+  
   public pokemonArray: Pokemon[] = [];
 
   public onButtonClick(pokemon : Pokemon, pokemonImg : HTMLImageElement, cardElement: HTMLElement, pokeball: HTMLElement ) {

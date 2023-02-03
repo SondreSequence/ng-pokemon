@@ -10,6 +10,9 @@ import { CaughtPokemonService } from 'src/app/services/caught-pokemon.service';
 export class TrainerProfileComponent implements OnInit {
   constructor(private caughtPokemonService: CaughtPokemonService) {}
   public caughtPokemonArray: Pokemon[] = [];
+  constructor(private apiService: ApiService, private caughtPokemonService: CaughtPokemonService) {}
+
+  public capturedPokemonArray: { name: string, image: string }[] = [];
 
   public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
     cardElement.className = 'card animate__animated animate__flip';
@@ -34,5 +37,8 @@ export class TrainerProfileComponent implements OnInit {
   ngOnInit() {
     this.caughtPokemonArray = JSON.parse(sessionStorage.getItem("captured-pokemon") || "[]");
   }
+}
+    this.capturedPokemonArray = JSON.parse(sessionStorage.getItem("captured-pokemon") || "[]");  
+    }
 }
 
