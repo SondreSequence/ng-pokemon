@@ -12,4 +12,12 @@ export class LoginPage {
   handleLogin(): void {
     this.router.navigateByUrl('/catalogue');
   }
+
+  public handleMouseEnter(pokemonLogo: HTMLElement) {
+    pokemonLogo.className =
+      'pokemon-logo animate__animated animate__rubberBand';
+    setTimeout(() => {
+      pokemonLogo.className = 'pokemon-logo';
+    }, 1000);
+  }
 }

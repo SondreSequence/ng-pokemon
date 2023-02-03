@@ -21,12 +21,23 @@ export class LoginFormComponent {
   public loginSubmit(loginForm: NgForm): void {
     const { username } = loginForm.value;
 
-    this.loginService.login(username).subscribe({
-      next: (user: Trainer) => {
-        this.userService.user = user;
-        this.login.emit();
-      },
-      error: () => {},
-    });
+    if (username != '') {
+      this.loginService.login(username).subscribe({
+        next: (user: Trainer) => {
+          this.userService.user = user;
+          this.login.emit();
+        },
+        error: () => {},
+      });
+    } else {
+      console.log('username too short');
+    }
+  }
+
+  public handleMouseEnter(pokeBall: HTMLElement) {
+    pokeBall.className = 'pokeball animate__animated animate__bounce';
+    setTimeout(() => {
+      pokeBall.className = 'pokeball';
+    }, 1000);
   }
 }

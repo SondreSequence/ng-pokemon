@@ -1,5 +1,5 @@
 <form
-  class="flex flex-row justify-center"
+  class="flex flex-row justify-center form-container"
   #loginForm="ngForm"
   (ngSubmit)="loginSubmit(loginForm)"
 >
@@ -14,8 +14,13 @@
       placeholder="Ash Ketchum"
     />
   </fieldset>
-  <button type="submit" class="login-button rounded">
+  <button
+    type="submit"
+    class="login-button rounded"
+    (mouseenter)="handleMouseEnter(pokeBall)"
+  >
     <img
+      #pokeBall
       class="pokeball"
       src="https://www.seekpng.com/png/full/14-144204_pixel-pokeball-png-picture-black-and-white-stock.png"
     />

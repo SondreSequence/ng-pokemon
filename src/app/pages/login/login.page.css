@@ -20,37 +20,40 @@
   height: auto;
 }
 
-.pokemon-logo:hover {
+/* .pokemon-logo:hover {
   display: inline-block;
   margin: 0 0.5rem;
 
   animation: rubberBand;
   animation-duration: 1s;
-}
+} */
 
 .logo-text {
   display: flex;
   justify-content: center;
   align-self: flex-start;
   font-size: 5vw;
-
-  bottom: 4vw;
+  bottom: 5vw;
   position: relative;
-  font-family: pkmn;
-  color: rgb(44, 113, 183);
+  font-family: Pkmn-2;
+
+  color: rgb(255, 218, 71);
+  text-shadow: 0.3vw 0.3vw 0px rgb(74, 127, 180);
 }
 
 .container {
   display: flex;
   background-color: rgb(255, 218, 71);
-  border: 1vw solid rgb(74, 127, 180);
+  border: 0.8vw solid rgb(74, 127, 180);
   align-self: center;
   justify-content: center;
   flex-direction: column;
+  row-gap: 2vw;
   height: 30vw;
-  max-height: 125px;
+  max-height: 260px;
+  padding: 0vw 5%;
   width: 60vw;
-  max-width: 250px;
+  max-width: 520px;
   margin-bottom: 30px;
   box-shadow: inset -0.7vw 1vw rgb(191, 158, 17);
 }
@@ -61,7 +64,7 @@
 
   font-family: pkmn;
 
-  font-size: 1.5vw;
+  font-size: 1vw;
 
   white-space: nowrap;
   overflow: hidden;
@@ -85,16 +88,11 @@
   justify-content: space-between;
   text-align: center;
   font-family: pkmn;
+
   border-radius: 2px;
   padding: 1vw;
-  width: 40vw;
-  max-width: 170px;
-  height: 6vw;
-  max-height: 52px;
-  line-height: 16px;
-  margin: auto;
-  margin-bottom: 5px;
-  margin-top: 2%;
+  width: 100%;
+  height: 5vw;
   background: white;
   border: 1px solid white;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black,
@@ -116,6 +114,10 @@
   font-family: "Pkmn";
   src: url("src\app\components\fonts\PixeloidSans-JR6qo.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Pkmn-2";
+  src: url("src\app\components\fonts\Pokemon-Solid.ttf") format("truetype");
+}
 
 @keyframes bounce {
   from {
@@ -126,7 +128,7 @@
   }
 }
 
-@media only screen and (min-width: 480px) {
+/* @media only screen and (min-width: 480px) {
   .form-text {
     font-size: 1vw;
   }
@@ -176,3 +178,4 @@
     box-shadow: inset -0.1vw 0.3vw rgb(191, 158, 17);
   }
 }
+ */

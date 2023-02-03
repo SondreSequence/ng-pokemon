@@ -1,24 +1,32 @@
+* {
+  width: 100%;
+}
+
+.form-container {
+  width: 100%;
+  height: auto;
+}
+
 .input-field {
   display: flex;
-  width: 32.5vw;
-  max-width: 135px;
+  width: 100%;
+
   font-family: pkmn;
   align-self: center;
   font-size: 1.5vw;
-
-  max-height: 5vw;
-  padding: 0.5vw;
+  padding: 1vw;
   border: 1px solid white;
   box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black,
     inset 0 0 0 1px black;
   border-radius: 2px;
 }
+
 ::placeholder {
   opacity: 1;
   font-family: pkmn;
 }
 
-@media only screen and (min-width: 480px) {
+/* @media only screen and (min-width: 480px) {
   .input-field {
     font-size: 1vw;
   }
@@ -27,38 +35,28 @@
   .input-field {
     font-size: 0.8vw;
   }
-}
+} */
 
 .login-button {
   background-color: white;
-  border: 2px solid black;
+  border: 0.3vw solid black;
   align-self: center;
-  max-width: 25px;
-  max-height: 25px;
+
   border-radius: 999px;
   padding: 1%;
   margin-left: 1%;
-  width: auto;
-  height: 8vw;
+  width: 5vw;
+  height: auto;
 }
 
 .pokeball {
   height: 100%;
   width: auto;
-  max-height: 33px;
-  max-width: 33px;
-  justify-self: end;
-}
-
-.pokeball:hover {
-  animation: bounce; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 0.7s; /* don't forget to set a duration! */
 }
 
 /* Animation */
 .anim-typewriter {
-  animation: typewriter 4s steps(44) 1s 1 normal both,
-    blinkTextCursor 500ms steps(44) infinite normal;
+  animation: typewriter 4s steps(44) 1s 1 normal both;
 }
 @keyframes typewriter {
   from {
@@ -66,13 +64,5 @@
   }
   to {
     width: 24em;
-  }
-}
-@keyframes blinkTextCursor {
-  from {
-    border-right-color: rgba(255, 255, 255, 0.75);
-  }
-  to {
-    border-right-color: transparent;
   }
 }
