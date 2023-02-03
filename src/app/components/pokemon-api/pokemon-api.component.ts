@@ -11,18 +11,29 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 
 export class PokemonApiComponent implements OnInit {
   constructor(private apiService: ApiService) {}
-  public pokemonArray: { name: string, image: string }[] = [];
+  public pokemonArray: Pokemon[] = [];
 
-  public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
+  public onButtonClick(pokemon : Pokemon, pokemonImg : HTMLImageElement, cardElement: HTMLElement, pokeball: HTMLElement ) {
     cardElement.className = 'card animate__animated animate__flip';
+
     setTimeout(() => {
       cardElement.className = 'caught';
       pokeball.style.display = 'block';
     }, 800);
+
+    if(Math.floor((Math.random() * 4) + 1)==1&&pokemon.name!="Rick Astely"){
+      pokemonImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+pokemon.id+".png";
+      pokemonImg.className="animate__animated animate__wobble";
+      setTimeout(() => {
+        cardElement.className = "shiny";
+      }, 801);
+    }
+
+
   }
 
   public rickAstely(cardContainer: HTMLDivElement, pokeball: HTMLElement, input: HTMLElement){
-    let rick = {name: "Rick Astely", image: "assets/rick.png"}
+    let rick = {name: "Rick Astely", image: "assets/rick.png", id: 0}
 
     this.pokemonArray.unshift(rick);
     pokeball.className = "pokeball animate__animated animate__rollOut"
@@ -74,8 +85,8 @@ ngOnInit() {
       let pkmnname = element.name;
       return {
       name: pkmnname.charAt(0).toUpperCase() + pkmnname.slice(1),
-      image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png"
-      };
+      image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png",
+      id: parseInt(number)};
       });
       sessionStorage.setItem("pokemons", JSON.stringify(this.pokemonArray));
       },
