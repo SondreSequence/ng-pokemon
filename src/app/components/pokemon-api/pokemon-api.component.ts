@@ -30,11 +30,14 @@ export class PokemonApiComponent implements OnInit {
       }, 801);
     }
 
+    this.caughtPokemonService.addToCaughtPokemon(pokemon);
+    console.log("CaptureID: " + pokemon.captureID)
+
 
   }
 
   public rickAstely(cardContainer: HTMLDivElement, pokeball: HTMLElement, input: HTMLElement){
-    let rick = {name: "Rick Astely", image: "assets/rick.png", id: 0}
+    let rick = {name: "Rick Astely", image: "assets/rick.png", id: 0, captureID: 0}
 
     this.pokemonArray.unshift(rick);
     pokeball.className = "pokeball animate__animated animate__rollOut"
@@ -87,7 +90,8 @@ ngOnInit() {
       return {
       name: pkmnname.charAt(0).toUpperCase() + pkmnname.slice(1),
       image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png",
-      id: parseInt(number)};
+      id: parseInt(number),
+      captureID: 0};
       });
       sessionStorage.setItem("pokemons", JSON.stringify(this.pokemonArray));
       },

@@ -26,7 +26,23 @@ export class CaughtPokemonService {
     const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
     const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
 
-    const allMons = previousMons.length === 0 ? [pokemon] : [...previousMons, pokemon];
+    let allMons = [pokemon];
+
+    if(!(previousMons.length === 0)){
+      const filledArray : Pokemon[] = [];
+    for(let i = 0; i<previousMons.length; i++){
+
+      filledArray.push(previousMons[i]);
+      previousMons[i].captureID = i;
+
+    }
+  
+    filledArray.push(pokemon);
+    pokemon.captureID = previousMons.length;
+    allMons = [...filledArray];
+  
+  }
+
     sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
     console.log(previousMons);
 
