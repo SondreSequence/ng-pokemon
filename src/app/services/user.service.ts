@@ -16,6 +16,8 @@ export class UserService {
 
   set user(user: Trainer | undefined) {
     storageUtil.storageSave<Trainer>(StorageKeys.Trainer, user!);
+    if(user)
+    sessionStorage.setItem("captured-pokemon", JSON.stringify(user.pokemon));
     this._user = user;
   }
 

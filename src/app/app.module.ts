@@ -12,6 +12,7 @@ import { LoginFormComponent } from './components/login/login-form/login-form.com
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfilePageComponent } from './pages/profile.page/profile.page.component';
+import { TrainerProfileComponent } from './components/trainer-profile/trainer-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfilePageComponent } from './pages/profile.page/profile.page.componen
     PokemonApiComponent,
     NavbarComponent,
     ProfilePageComponent,
+    TrainerProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

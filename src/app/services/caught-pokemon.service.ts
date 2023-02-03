@@ -21,47 +21,29 @@ export class CaughtPokemonService {
   ) { }
 
 
-  public addToCaughtPokemon (caughtPokemon: Pokemon | undefined) {
+  public addToCaughtPokemon(pokemon: Pokemon){
 
-    if(!this.userService.user){
-      throw new Error("addToCaughtPokemon: There is no user")
-    }
+    const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
+    const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
 
-    const user: Trainer = JSON.parse(sessionStorage.getItem('pokemon-trainers')|| "[]")
-    if(caughtPokemon){
-      if(this.userService.pokemonIsCaught(caughtPokemon.name)){
-        throw new Error("addToCaughtPokemon: Pokemon is already caught")
-      }
-    }
+    const allMons = previousMons.length === 0 ? [pokemon] : [...previousMons, pokemon];
+    sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
+    console.log(previousMons);
 
-        
-const apiURL = 'https://magical-olivine-windflower.glitch.me'
-const apiKey = 'pullapydde'
-fetch(`${apiURL}/trainers/${'id'}`, {
-        method: 'PATCH', // NB: Set method to PATCH
-        headers: {
-            'X-API-Key': apiKey,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            // Provide new Pokémon to add trainer with id 1
-            pokemon: [user.pokemon, caughtPokemon]
-        })
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Could not update trainer')
-      }
-      return response.json()
-    })
-    .then(updatedTrainer => {
-      console.log(updatedTrainer)
-      sessionStorage.setItem("pokemon-trainers",updatedTrainer)
-      
-    })
-    .catch(error => {
-    })
+    fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
+      method: 'PATCH', // NB: Set method to PATCH
+      headers: {
+          'X-API-Key': "pullapydde",
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          // Provide new Pokémon to add trainer with id 1
+          pokemon: allMons
+      })
+  })
+  
   }
+
 
 
     /*
