@@ -44,7 +44,6 @@ export class CaughtPokemonService {
   }
 
     sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
-    console.log(previousMons);
 
     fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
@@ -65,10 +64,10 @@ export class CaughtPokemonService {
     
     const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
     const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
+    previousMons.splice(captureID, 1);
 
-    const allMons = previousMons.splice(captureID);
-    sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
-    console.log(previousMons);
+    sessionStorage.setItem("captured-pokemon", JSON.stringify(previousMons));
+
 
     fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
@@ -78,7 +77,7 @@ export class CaughtPokemonService {
       },
       body: JSON.stringify({
           // Provide new Pokémon to add trainer with id 1
-          pokemon: allMons
+          pokemon: previousMons
       })
   })
   }
