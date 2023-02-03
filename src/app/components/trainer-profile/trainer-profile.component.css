@@ -48,3 +48,64 @@
             max-height: 100px;
             z-index: 2;
           }
+        
+          .boxparent {
+            position: absolute;
+            height: 7524px;
+            pointer-events: none;
+            z-index: 3;
+          }
+          
+          .box {
+            display: block;
+            font-size: 16px;
+            border-radius: 2px;
+            padding: 8px;
+            width: 22em;
+            height: 3em;
+            line-height: 16px;
+            background-color: white;
+            border: 1px solid white;
+            box-shadow: 0 1px 0 1px black,
+            inset 0 1px 0 1px black,
+            0 0 0 1px black,
+            inset 0 0 0 1px black;
+            position: fixed;
+            bottom: 20px; /* add this */
+            }
+        
+          .box > i {
+          width: 0;
+          height: 0;
+          border: 5px solid transparent;
+          border-top-color: black;
+          margin-top: 2.%;
+          animation: bounce 0.5s ease-in-out 0 infinite alternate;
+          float: right;
+        }
+        
+        /* Input Animation */
+        .form-text {
+        display: block;
+        position: relative;
+        text-align: center;
+        top: 50%;
+        font-size: 20vh;
+        margin: 0 auto;
+        font-size: 70%;
+        white-space: nowrap;
+        overflow: hidden;
+        transform: translateY(-50%);
+        }
+        
+        .anim-typewriter {
+        animation: typewriter 2s steps(44) 0.5s 1 normal both;
+        }
+        @keyframes typewriter {
+        from {
+          width: 0em;
+        }
+        to {
+          width: 24em;
+        }
+        }

@@ -27,6 +27,14 @@ export class TrainerProfileComponent implements OnInit {
     }
   }
 
+  public inputChange(pokemon: Pokemon, input: HTMLElement ) {
+    input.className = '';
+    setTimeout(() => {
+      input.className = "form-text anim-typewriter";
+    }, 1);
+    input.innerHTML = "You caught " + pokemon.name + "!";
+  } 
+
 
   public handleMouseEnter(pokemonImg: HTMLElement){
       pokemonImg.className = 'animate__animated animate__bounce';
