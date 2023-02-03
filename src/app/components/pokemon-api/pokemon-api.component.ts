@@ -55,11 +55,14 @@ export class PokemonApiComponent implements OnInit {
   } 
 
   public handleMouseEnter(pokemonImg: HTMLElement){
-    pokemonImg.className = 'animate__animated animate__bounce';
+      pokemonImg.className = 'animate__animated animate__bounce';
+    setTimeout(() => {
+      pokemonImg.className = '';
+    }, 1000);
   }
 
   public handleMouseLeave(pokemonImg: HTMLElement){
-    pokemonImg.className = '';
+    //pokemonImg.className = 'animate__animated animate__bounce';
   }
 
 

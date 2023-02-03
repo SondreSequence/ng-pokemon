@@ -2,9 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map,Observable } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
+import { StorageKeys } from '../enums/storage-keys.enum';
 import { APIResponse } from '../models/apiResponse.model';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
+import { storageUtil } from '../utils/storage.util';
 
 const {apiPokemon} = environment;
 const {apiTrainers} = environment;
@@ -31,18 +33,14 @@ export class ApiService {
 
 
   public test(pokemon: Pokemon){
-  
-    let previousMons = JSON.parse(sessionStorage.getItem("capturedPokemons")||"[]");
-    let trainer : Trainer = JSON.parse(sessionStorage.getItem("trainer")||"[]");
 
-    let allMons = [pokemon];
+    const previousMons = JSON.parse(sessionStorage.getItem("captured-pokemon")||"[]");
+    const trainer = JSON.parse(sessionStorage.getItem("pokemon-trainers")||"[]");
 
-    if (previousMons && typeof previousMons === "object" && previousMons.length) {
-      allMons = [...previousMons, pokemon]; //IS not iterable if empty make sure u return just pokemon if it's not iterable. 
-    }
-    console.log("Posted " +  allMons)
+    const allMons = previousMons.length === 0 ? [pokemon] : [...previousMons, pokemon];
+    sessionStorage.setItem("captured-pokemon", JSON.stringify(allMons));
+    console.log(previousMons);
 
-    sessionStorage.setItem("capturedPokemons", JSON.stringify(allMons));
     fetch(`${"https://magical-olivine-windflower.glitch.me"}/trainers/${trainer.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
       headers: {
@@ -50,9 +48,11 @@ export class ApiService {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+          // Provide new Pokémon to add trainer with id 1
           pokemon: allMons
       })
   })
-
+  
   }
+
 }
