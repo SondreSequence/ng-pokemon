@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2,} from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { APIResponse } from 'src/app/models/apiResponse.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
+import { CaughtPokemonService } from 'src/app/services/caught-pokemon.service';
 
 @Component({
   selector: 'app-pokemon-api',
@@ -10,7 +11,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 })
 
 export class PokemonApiComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private caughtPokemonService: CaughtPokemonService) {}
   public pokemonArray: Pokemon[] = [];
 
   public onButtonClick(pokemon : Pokemon, pokemonImg : HTMLImageElement, cardElement: HTMLElement, pokeball: HTMLElement ) {

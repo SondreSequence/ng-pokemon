@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginPage } from './pages/login/login.page';
 import { PokemonCataloguePage } from './pages/pokemon-catalogue/pokemon-catalogue.page';
+import { ProfilePageComponent } from './pages/profile.page/profile.page.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -12,6 +13,11 @@ const routes: Routes = [
     component: PokemonCataloguePage,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'profile', 
+    component: ProfilePageComponent, 
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageKeys } from '../enums/storage-keys.enum';
-import { Trainer } from '../models/trainer.model';
 import { Pokemon } from '../models/pokemon.model';
+import { Trainer } from '../models/trainer.model';
 import { storageUtil } from '../utils/storage.util';
 
 @Injectable({
@@ -23,5 +23,16 @@ export class UserService {
 
   constructor() {
     this._user = storageUtil.storageRead<Trainer>(StorageKeys.Trainer);
+  }
+
+  public pokemonIsCaught(pokemonName: string): boolean{
+    if(this._user){
+
+      console.log(this._user)
+      let user: Trainer = JSON.parse(sessionStorage.getItem('pokemon-trainers')|| "[]")
+      return Boolean(user.pokemon.find((pokemon: Pokemon) => pokemon.name === pokemonName))
+    }
+    return false;
+
   }
 }
