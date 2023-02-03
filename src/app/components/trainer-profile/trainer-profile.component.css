@@ -1,9 +1,50 @@
-.mainContainer{
-    color: rgba(255,255,255,.75); 
-}
+*{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Pkmn';
+    color: black;
+    font-size: 1rem;
+  }
+  
+  @font-face {
+    font-family: 'Pkmn';
+    src: url('../fonts/PixeloidSans-JR6qo.ttf') format('truetype');
+    }
+  
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
+    .card {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+        background-image: linear-gradient(to top, white 50%, rgb(250,7,0) 50%), radial-gradient(circle at 50% 50%, rgb(250,7,0), white);
+        border: 1.9px solid black;
+        border-radius: theme('borderRadius.lg');
+        padding: theme('spacing.6');
+        box-shadow: theme('boxShadow.lg');
+        margin: 15px;
+        position: relative;
+        }
+        .card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 2.9px;
+        width: 101.1%;
+        margin-left: -0.1vw;
+        background-color: black;
+        z-index: 1;
+        }
 
-.trainerPokemonBox{
-
-    color: rgba(255,255,255,.75);
-}
+        .card > img {
+            max-width: 200px;
+            max-height: 100px;
+            z-index: 2;
+          }
