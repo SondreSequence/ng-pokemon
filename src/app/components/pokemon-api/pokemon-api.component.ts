@@ -82,8 +82,7 @@ ngOnInit() {
   let pokemons = JSON.parse(sessionStorage.getItem("pokemons") || "[]");
 
   //Won't request data from the api if it's already stored in the sessionStorage
-  if (this.pokemonArray.length>0) {
-    console.log("Activated")
+  if (this.pokemonArray.length<=0) {
     this.apiService.getPokemon().subscribe(
       (response: APIResponse) => {
       this.pokemonArray = response.results.map((element, index) => {

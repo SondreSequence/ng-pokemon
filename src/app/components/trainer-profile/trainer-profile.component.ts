@@ -42,7 +42,7 @@ export class TrainerProfileComponent implements OnInit {
 
 
   public handleMouseEnter(pokemonImg: HTMLElement){
-      pokemonImg.className = 'animate__animated animate__shakeX';
+      pokemonImg.className = 'animate__animated animate__wobble';
     setTimeout(() => {
       pokemonImg.className = '';
     }, 1000);
