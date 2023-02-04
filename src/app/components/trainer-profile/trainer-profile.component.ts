@@ -14,7 +14,12 @@ export class TrainerProfileComponent implements OnInit {
   public onButtonClick(pokemon: Pokemon, pokemonImg: HTMLElement, cardElement: HTMLElement ) {
     
     if(pokemon.image.includes("shiny")){
+      this.caughtPokemonService.removeFromCaughtPokemon(pokemon)
       this.caughtPokemonArray.splice(pokemon.captureID, 1);
+    for(let i = 0; i<this.caughtPokemonArray.length; i++)
+    {
+      this.caughtPokemonArray[i].captureID = i;
+    }
  }
     else{
     cardElement.className += ' minimize';
