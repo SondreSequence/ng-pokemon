@@ -58,12 +58,12 @@
           
           .box {
             display: block;
-            font-size: 16px;
+            font-size: 20px;
             border-radius: 2px;
             padding: 8px;
             width: 22em;
             height: 3em;
-            line-height: 16px;
+            line-height: 25px;
             background-color: white;
             border: 1px solid white;
             box-shadow: 0 1px 0 1px black,
@@ -71,15 +71,15 @@
             0 0 0 1px black,
             inset 0 0 0 1px black;
             position: fixed;
-            bottom: 20px; /* add this */
+            bottom: 20px;
             }
         
           .box > i {
           width: 0;
           height: 0;
-          border: 5px solid transparent;
+          border: 6px solid transparent;
           border-top-color: black;
-          margin-top: 2.%;
+          margin-top: 10.%;
           animation: bounce 0.5s ease-in-out 0 infinite alternate;
           float: right;
         }
@@ -109,3 +109,49 @@
           width: 24em;
         }
         }
+
+        .shiny {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            background-image: linear-gradient(to top, white 50%, purple 50%), radial-gradient(circle at 50% 50%, purple, white);
+            border: 1.9px solid black;
+            border-radius: theme('borderRadius.lg');
+            padding: theme('spacing.6');
+            box-shadow: theme('boxShadow.lg');
+            margin: 15px;
+            position: relative;
+          
+            }
+            .shiny::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 2.9px;
+            width: 101.1%;
+            margin-left: -0.1vw;
+            background-color: black;
+            z-index: 1;
+            }
+          
+            .shiny > img {
+              max-width: 200px;
+              max-height: 100px;
+              z-index: 2;
+            }
+
+            .minimize {
+                animation: move 1s;
+              }
+              
+              @keyframes move {
+                from {
+                  transform: scale(1);
+                }
+                to {
+                  transform: scale(0);
+                }
+              }

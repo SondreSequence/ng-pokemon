@@ -11,20 +11,25 @@ export class TrainerProfileComponent implements OnInit {
   constructor(private caughtPokemonService: CaughtPokemonService) {}
   public caughtPokemonArray: Pokemon[] = [];
 
-  public onButtonClick(pokemon: Pokemon, cardElement: HTMLElement, pokeball: HTMLElement ) {
-    cardElement.className = 'card animate__animated animate__flip';
-    setTimeout(() => {
-      cardElement.className = 'caught';
-      pokeball.style.display = 'block';
-    }, 800);
-    console.log(pokemon.captureID)
+  public onButtonClick(pokemon: Pokemon, pokemonImg: HTMLElement, cardElement: HTMLElement ) {
+    
+    if(pokemon.image.includes("shiny")){
+      this.caughtPokemonArray.splice(pokemon.captureID, 1);
+ }
+    else{
+    cardElement.className += ' minimize';
 
-    this.caughtPokemonService.removeFromCaughtPokemon(pokemon)
-    this.caughtPokemonArray.splice(pokemon.captureID, 1);
+    setTimeout(() => {
+      this.caughtPokemonService.removeFromCaughtPokemon(pokemon)
+      this.caughtPokemonArray.splice(pokemon.captureID, 1);
     for(let i = 0; i<this.caughtPokemonArray.length; i++)
     {
       this.caughtPokemonArray[i].captureID = i;
     }
+    }, 1000);
+  }
+
+    
   }
 
   public inputChange(pokemon: Pokemon, input: HTMLElement ) {
@@ -37,11 +42,17 @@ export class TrainerProfileComponent implements OnInit {
 
 
   public handleMouseEnter(pokemonImg: HTMLElement){
-      pokemonImg.className = 'animate__animated animate__bounce';
+      pokemonImg.className = 'animate__animated animate__shakeX';
     setTimeout(() => {
       pokemonImg.className = '';
     }, 1000);
   }
+
+  public shinyCheck(pokemon: Pokemon, cardElement: HTMLElement){
+    if(pokemon.image.includes("shiny"))
+    cardElement.className = "shiny";
+  }
+  
 
 
   ngOnInit() {

@@ -26,6 +26,7 @@ export class PokemonApiComponent implements OnInit {
     if(Math.floor((Math.random() * 4) + 1)==1&&pokemon.name!="Rick Astely"){
       pokemonImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+pokemon.id+".png";
       pokemonImg.className="animate__animated animate__wobble";
+      pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+pokemon.id+".png";
       setTimeout(() => {
         cardElement.className = "shiny";
       }, 801);
@@ -81,7 +82,7 @@ ngOnInit() {
   let pokemons = JSON.parse(sessionStorage.getItem("pokemons") || "[]");
 
   //Won't request data from the api if it's already stored in the sessionStorage
-  if (!this.pokemonArray.length) {
+  if (this.pokemonArray.length>0) {
     console.log("Activated")
     this.apiService.getPokemon().subscribe(
       (response: APIResponse) => {

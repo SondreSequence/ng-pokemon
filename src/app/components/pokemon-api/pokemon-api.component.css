@@ -26,12 +26,12 @@
   
   .box {
     display: block;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 2px;
     padding: 8px;
     width: 22em;
     height: 3em;
-    line-height: 16px;
+    line-height: 25px;
     background-color: white;
     border: 1px solid white;
     box-shadow: 0 1px 0 1px black,
@@ -39,15 +39,15 @@
     0 0 0 1px black,
     inset 0 0 0 1px black;
     position: fixed;
-    bottom: 20px; /* add this */
+    bottom: 20px;
     }
 
   .box > i {
   width: 0;
   height: 0;
-  border: 5px solid transparent;
+  border: 6px solid transparent;
   border-top-color: black;
-  margin-top: 2.%;
+  margin-top: 10.%;
   animation: bounce 0.5s ease-in-out 0 infinite alternate;
   float: right;
 }
