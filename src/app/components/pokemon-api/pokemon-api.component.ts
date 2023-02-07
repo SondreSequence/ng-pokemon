@@ -16,25 +16,17 @@ export class PokemonApiComponent implements OnInit {
   public pokemonArray: Pokemon[] = [];
 
   public onButtonClick(pokemon : Pokemon, pokemonImg : HTMLImageElement, cardElement: HTMLElement, pokeball: HTMLElement ) {
-    cardElement.className = 'card animate__animated animate__flip';
-
-    setTimeout(() => {
-      cardElement.className = 'caught';
-      pokeball.style.display = 'block';
-    }, 800);
+    cardElement.className = 'card animate__animated animate__flip caught';
+    pokeball.style.display = 'block';
 
     if(Math.floor((Math.random() * 4) + 1)==1&&pokemon.name!="Rick Astely"){
       pokemonImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+pokemon.id+".png";
       pokemonImg.className="animate__animated animate__wobble";
-      setTimeout(() => {
-        cardElement.className = "shiny";
-      }, 801);
+      cardElement.className = "shiny";
     }
 
     this.caughtPokemonService.addToCaughtPokemon(pokemon);
     console.log("CaptureID: " + pokemon.captureID)
-
-
   }
 
   public rickAstely(cardContainer: HTMLDivElement, pokeball: HTMLElement, input: HTMLElement){

@@ -10,9 +10,9 @@
   </div>
 
   <div class="container shadow">
-    <app-login-form (login)="handleLogin()"></app-login-form>
+    <app-login-form (login)="handleLogin()" (name)="inputChange($event, input)"></app-login-form>
     <div class="box">
-      <h1 class="form-text anim-typewriter">
+      <h1 #input class="form-text anim-typewriter">
         Please type your trainer name above!
       </h1>
       <i></i>
