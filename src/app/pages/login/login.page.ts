@@ -8,11 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.page.css'],
 })
 export class LoginPage implements OnInit{
-  constructor(@Inject(Router) private readonly router: Router, private readonly userService: UserService) {}
-
-  handleLogin(): void {
-    this.router.navigateByUrl('/catalogue');
-  }
+  constructor(private readonly router: Router, private readonly userService: UserService) {}
 
   public handleMouseEnter(pokemonLogo: HTMLElement) {
     pokemonLogo.className =

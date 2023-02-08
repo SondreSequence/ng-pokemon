@@ -16,7 +16,8 @@ export class LoginFormComponent{
 
   constructor(
     private readonly loginService: LoginService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly router: Router
   ) {}
 
 
@@ -28,6 +29,7 @@ export class LoginFormComponent{
       this.loginService.login(username).subscribe({
         next: (user: Trainer) => {
           this.userService.user = user;
+          this.router.navigateByUrl('/catalogue');
 
         },
         error: () => {},
