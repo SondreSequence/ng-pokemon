@@ -8,7 +8,14 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.page.css'],
 })
 export class LoginPage implements OnInit{
-  constructor(private readonly router: Router, private readonly userService: UserService) {}
+  constructor(@Inject(Router) private readonly router: Router, private readonly userService: UserService) {}
+
+  handleLogin(): void {
+    this.router.navigate(["/catalogue"]).then(() => {
+      this.router.navigateByUrl("/catalogue");
+    });
+    
+  }
 
   public handleMouseEnter(pokemonLogo: HTMLElement) {
     pokemonLogo.className =
@@ -19,7 +26,7 @@ export class LoginPage implements OnInit{
   }
 
   public inputChange(value:string, input: HTMLHeadElement) {
-    console.log(value); // will output "chicken"
+    console.log(value);
     input.className = '';
     input.innerHTML = value;
     setTimeout(() => {
